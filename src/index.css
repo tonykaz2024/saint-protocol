@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #0d0f14;
+  --color-surface: #161922;
+  --color-surface-hover: #1e2230;
+  --color-accent: #c4a882;
+  --color-accent-dim: #a08968;
+  --color-text: #e8e0d5;
+  --color-text-secondary: #8b8a88;
+  --color-text-muted: #4a5568;
+  --color-success: #6db89a;
+  --color-warning: #d4a853;
+  --color-error: #c97070;
+  --color-border: #2a2e3a;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+input[type='range'] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type='range']::-webkit-slider-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin-top: -8px;
+  box-shadow: 0 0 12px rgba(196, 168, 130, 0.3);
+}
+
+input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: none;
+  box-shadow: 0 0 12px rgba(196, 168, 130, 0.3);
+}
