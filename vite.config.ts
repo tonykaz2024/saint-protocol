@@ -39,6 +39,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/saint-protocol/',
   build: {
     chunkSizeWarningLimit: 1000,
   },
