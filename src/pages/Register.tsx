@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { AlertCircle } from 'lucide-react'
+import { t } from '../lib/i18n'
 
 export default function Register() {
   const [email, setEmail] = useState('')
@@ -31,11 +32,11 @@ export default function Register() {
     <div className="min-h-screen bg-bg flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <Link to="/" className="block text-center mb-10">
-          <span className="text-accent text-2xl font-semibold tracking-widest">SAINT</span>
+          <span className="text-accent text-2xl font-semibold tracking-widest">{t('app.name')}</span>
         </Link>
 
         <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-xl p-6 space-y-4">
-          <h2 className="text-text text-lg font-medium text-center mb-2">Create Account</h2>
+          <h2 className="text-text text-lg font-medium text-center mb-2">{t('auth.create')}</h2>
 
           {error && (
             <div className="flex items-center gap-2 bg-error/10 text-error px-3 py-2 rounded-lg text-sm">
@@ -56,13 +57,13 @@ export default function Register() {
                     : 'bg-bg border-border text-text-secondary hover:text-text'
                 }`}
               >
-                {r === 'therapist' ? 'Therapist' : 'Patient'}
+                {r === 'therapist' ? t('auth.therapist') : t('auth.patient')}
               </button>
             ))}
           </div>
 
           <div>
-            <label className="text-text-secondary text-sm block mb-1.5">Full Name</label>
+            <label className="text-text-secondary text-sm block mb-1.5">{t('auth.name')}</label>
             <input
               type="text"
               value={fullName}
@@ -73,7 +74,7 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="text-text-secondary text-sm block mb-1.5">Email</label>
+            <label className="text-text-secondary text-sm block mb-1.5">{t('auth.email')}</label>
             <input
               type="email"
               value={email}
@@ -84,7 +85,7 @@ export default function Register() {
           </div>
 
           <div>
-            <label className="text-text-secondary text-sm block mb-1.5">Password</label>
+            <label className="text-text-secondary text-sm block mb-1.5">{t('auth.password')}</label>
             <input
               type="password"
               value={password}
@@ -100,11 +101,11 @@ export default function Register() {
             disabled={loading}
             className="w-full bg-accent text-bg py-2.5 rounded-lg font-medium hover:bg-accent-dim transition-colors disabled:opacity-50"
           >
-            {loading ? 'Creating...' : 'Create Account'}
+            {loading ? t('auth.creating') : t('auth.create')}
           </button>
 
           <p className="text-center text-text-muted text-sm">
-            Have an account? <Link to="/login" className="text-accent hover:underline">Sign in</Link>
+            {t('auth.haveAccount')} <Link to="/login" className="text-accent hover:underline">{t('auth.signIn')}</Link>
           </p>
         </form>
       </div>

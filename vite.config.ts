@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'SAINT Protocol',
-        short_name: 'SAINT',
-        description: 'Therapeutic audio companion for post-treatment consolidation',
+        name: 'MindVox - Therapeutic Audio',
+        short_name: 'MindVox',
+        description: 'Therapeutic audio companion for post-treatment consolidation (EN/RO/RU)',
         theme_color: '#0d0f14',
         background_color: '#0d0f14',
         display: 'standalone',
