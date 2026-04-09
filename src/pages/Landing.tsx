@@ -1,17 +1,15 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Play, BarChart3, Shield, Users, ChevronRight, Headphones, Brain, Heart, Sun, Eye, Moon, Globe } from 'lucide-react'
-import { t, setLang, getLang, type Lang } from '../lib/i18n'
+import { useLang } from '../contexts/LangContext'
+import type { Lang } from '../lib/i18n'
 
 const langs: Lang[] = ['en', 'ro', 'ru']
 
 export default function Landing() {
-  const [, setTick] = useState(0)
-  const forceUpdate = () => setTick(n => n + 1)
+  const { t, setLang, lang } = useLang()
 
-  const switchLang = (lang: Lang) => {
-    setLang(lang)
-    forceUpdate()
+  const switchLang = (l: Lang) => {
+    setLang(l)
   }
 
   const features = [
@@ -51,17 +49,17 @@ export default function Landing() {
           {/* Language Switcher */}
           <div className="flex items-center gap-1 bg-surface border border-border rounded-full px-1 py-0.5">
             <Globe size={14} className="text-text-muted ml-1.5" />
-            {langs.map(lang => (
+            {langs.map(l => (
               <button
-                key={lang}
-                onClick={() => switchLang(lang)}
+                key={l}
+                onClick={() => switchLang(l)}
                 className={`px-2.5 py-1 rounded-full text-xs font-medium uppercase transition-colors ${
-                  getLang() === lang
+                  lang === l
                     ? 'bg-accent text-bg'
                     : 'text-text-secondary hover:text-text'
                 }`}
               >
-                {lang}
+                {l}
               </button>
             ))}
           </div>

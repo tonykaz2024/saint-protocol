@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { AlertCircle } from 'lucide-react'
-import { t } from '../lib/i18n'
+import { useLang } from '../contexts/LangContext'
 
 export default function Register() {
   const [email, setEmail] = useState('')
@@ -12,6 +12,7 @@ export default function Register() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const { signUp } = useAuth()
+  const { t } = useLang()
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {

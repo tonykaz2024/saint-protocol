@@ -2,17 +2,16 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { Home, BarChart3, Settings, Users, FolderOpen, LogOut, Menu, X, Globe } from 'lucide-react'
 import { useState } from 'react'
-import { t, setLang, getLang, type Lang } from '../lib/i18n'
+import { useLang } from '../contexts/LangContext'
+import type { Lang } from '../lib/i18n'
 
 function LangSwitcher() {
-  const [, setTick] = useState(0)
-  const current = getLang()
-  const pick = (l: Lang) => { setLang(l); setTick(n => n + 1) }
+  const { lang: current, setLang } = useLang()
   return (
     <div className="flex items-center gap-1">
       <Globe size={14} className="text-text-muted" />
       {(['en','ro','ru'] as Lang[]).map(l => (
-        <button key={l} onClick={() => pick(l)} className={`px-1.5 py-0.5 rounded text-xs font-medium transition-colors ${current === l ? 'bg-accent/20 text-accent' : 'text-text-muted hover:text-text'}`}>{l.toUpperCase()}</button>
+        <button key={l} onClick={() => setLang(l)} className={`px-1.5 py-0.5 rounded text-xs font-medium transition-colors ${current === l ? 'bg-accent/20 text-accent' : 'text-text-muted hover:text-text'}`}>{l.toUpperCase()}</button>
       ))}
     </div>
   )
@@ -32,6 +31,7 @@ const therapistNav = [
 
 export default function Layout({ role }: { role: 'patient' | 'therapist' }) {
   const { signOut, profile } = useAuth()
+  const { t } = useLang()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const nav = role === 'patient' ? patientNav : therapistNav
